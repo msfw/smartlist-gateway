@@ -1,0 +1,20 @@
+{
+    "tokenErrors": {
+        "noTokenProvided": {
+            "status": 400,
+            "description": "No token provided."
+        },
+        "tokenIncorrectFormat":{
+            "status": 400,
+            "description":"Token incorrect format."
+        },
+        "malFormattedToken":{
+            "status": 400,
+            "description": "Malformatted token"
+        },
+        "invalidToken":{
+            "status": 401,
+            "description": "Invalid token."
+        }
+    }
+}
