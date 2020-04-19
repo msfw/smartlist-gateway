@@ -18,8 +18,8 @@ app.use(cors({
 }));
 app.get('/', (req, res) => res.send('Hello Gateway API'));
 
-app.get('/auth/*', (req, res, next) => userServiceProxy(req, res, next));
-app.get('/list*', (req, res, next) => middleware(req, res, () => listsServiceProxy(req, res, next)));
+app.post('/auth/*', (req, res, next) => userServiceProxy(req, res, next));
+app.post('/list*', (req, res, next) => middleware(req, res, () => listsServiceProxy(req, res, next)));
 
 const port = process.env.PORT || 3000;
 app.listen(port);
