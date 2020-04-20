@@ -9,6 +9,8 @@ require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
 
 const app = express()
 
+app.post('/auth/*', (req, res, next) => res.send('Até aqui foi' + process.env.ALLOW_FROM_URL));
+
 app.use(helmet())
 const site = process.env.ALLOW_FROM_URL;
 app.use(cors({
@@ -19,7 +21,6 @@ app.use(cors({
 const userServiceProxy = httpProxy(process.env.AUTH_API_URL);
 const listsServiceProxy = httpProxy(process.env.LISTS_API_URL);
 
-app.post('/auth/*', (req, res, next) => res.send('Até aqui foi'));
 app.get('/auth/*', (req, res, next) => res.send('Até aqui foi'));
 app.put('/auth/*', (req, res, next) => res.send('Até aqui foi'));
 app.delete('/auth/*', (req, res, next) => res.send('Até aqui foi'));
