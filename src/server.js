@@ -12,13 +12,16 @@ const userServiceProxy = httpProxy(process.env.AUTH_API_URL);
 const listsServiceProxy = httpProxy(process.env.LISTS_API_URL);
 
 const site = process.env.ALLOW_FROM_URL;
-app.use(cors({
+app.use(cors());
+/*{
     origin: site,
     optionsSuccessStatus: 200 
-}));
+}*/
 //app.get('/', (req, res) => res.send('Hello Gateway API'));
 
 app.post('/auth/*', (req, res, next) => userServiceProxy(req, res, next));
+
+//app.post('/auth/*', (req, res, next) => userServiceProxy(req, res, next));
 app.get('/list*', (req, res, next) => middleware(req, res, () => listsServiceProxy(req, res, next)));
 app.post('/list*', (req, res, next) => middleware(req, res, () => listsServiceProxy(req, res, next)));
 
