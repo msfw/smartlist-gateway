@@ -21,10 +21,10 @@ app.use(cors({
 const userServiceProxy = httpProxy(process.env.AUTH_API_URL);
 const listsServiceProxy = httpProxy(process.env.LISTS_API_URL);
     
-app.post('/auth/*', (req, res, next) => res.send('Até aqui foi' + process.env.ALLOW_FROM_URL));
-app.get('/auth/*', (req, res, next) => res.send('Até aqui foi'));
-app.put('/auth/*', (req, res, next) => res.send('Até aqui foi'));
-app.delete('/auth/*', (req, res, next) => res.send('Até aqui foi'));
+app.post('/auth/*', (req, res, next) => userServiceProxy(req, res, next));
+app.get('/auth/*', (req, res, next) => userServiceProxy(req, res, next));
+app.put('/auth/*', (req, res, next) => userServiceProxy(req, res, next));
+app.delete('/auth/*', (req, res, next) => userServiceProxy(req, res, next));
 
 
 app.get('/list*', (req, res, next) => middleware(req, res, () => listsServiceProxy(req, res, next)));
