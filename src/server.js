@@ -13,10 +13,10 @@ app.post('/auth/*', (req, res, next) => res.send('Até aqui foi' + process.env.A
 
 app.use(helmet())
 const site = process.env.ALLOW_FROM_URL;
-app.use(cors({
-    origin: site,
-    optionsSuccessStatus: 200    
-}));
+// app.use(cors({
+//     origin: site,
+//     optionsSuccessStatus: 200    
+// }));
 
 const userServiceProxy = httpProxy(process.env.AUTH_API_URL);
 const listsServiceProxy = httpProxy(process.env.LISTS_API_URL);
