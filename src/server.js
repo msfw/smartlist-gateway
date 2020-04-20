@@ -14,7 +14,7 @@ app.use(helmet())
 const site = process.env.ALLOW_FROM_URL;
 
 app.use(cors({
-        origin: site + 'auth/register/',
+        origin: site,
         optionsSuccessStatus: 200    
     }));
     
