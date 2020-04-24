@@ -1,9 +1,8 @@
 const jwt = require('jsonwebtoken')
-const middlewareErrors = require('../resources/middlewareErrors.json')
 
 module.exports = function (req, res, next) {
     const authHeader = req.headers.authorization;
-    const { noTokenProvided, tokenIncorrectFormat, malFormattedToken, invalidToken } = middlewareErrors.tokenErrors;
+    const { noTokenProvided, tokenIncorrectFormat, malFormattedToken, invalidToken } = res.__('tokenErrors');
 
     if (!authHeader)
         return res.status(noTokenProvided.status).send(noTokenProvided.description)

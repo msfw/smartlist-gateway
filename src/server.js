@@ -4,6 +4,7 @@ const cors = require('cors');
 const path = require('path');
 const middleware = require('./middlewares/middleware');
 const helmet = require('helmet')
+const i18n = require('i18n')
 
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
 
@@ -18,6 +19,12 @@ app.use(cors({
         optionsSuccessStatus: 200    
     }));
     
+i18n.configure({
+    locales: ['pt-BR', 'pt', 'en-US', 'en'],
+    directory: `${__dirname}/resources/errors`
+})
+
+app.use(i18n.init)    
 const userServiceProxy = httpProxy(process.env.AUTH_API_URL);
 const listsServiceProxy = httpProxy(process.env.LISTS_API_URL);
     
