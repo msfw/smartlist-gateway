@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 module.exports = function (req, res, next) {
     console.log(req.headers.authorization)
     const authHeader = req.headers.authorization;
+    console.log(`Token: ${authHeader}`)
     console.log(`Token valid: ${(!authHeader)}`)
     const { noTokenProvided, tokenIncorrectFormat, malFormattedToken, invalidToken } = res.__('tokenErrors');
 
