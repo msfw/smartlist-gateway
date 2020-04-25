@@ -6,7 +6,7 @@ module.exports = function (req, res, next) {
     console.log(`Token: ${authHeader}`)
     console.log(`Token valid: ${(!authHeader)}`)
     const { noTokenProvided, tokenIncorrectFormat, malFormattedToken, invalidToken } = res.__('tokenErrors');
-
+    console.log("FOI")
     if (!authHeader)
         return res.status(noTokenProvided.status).send(noTokenProvided.description)
 
