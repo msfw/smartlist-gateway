@@ -7,7 +7,7 @@ module.exports = function (req, res, next) {
     console.log(`Token valid: ${(!authHeader)}`)
     const { noTokenProvided, tokenIncorrectFormat, malFormattedToken, invalidToken } = res.__('tokenErrors');
 
-    if (authHeader)
+    if (!authHeader)
         return res.status(noTokenProvided.status).send(noTokenProvided.description)
 
     const parts = authHeader.split(' ')
